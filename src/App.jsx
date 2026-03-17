@@ -671,7 +671,7 @@ function Footer() {
         ))}
       </div>
       <div style={{ ...mono, fontSize: "0.6rem", color: "#4a3f30", letterSpacing: "0.1em" }}>
-        © 2026 · Jo-anne Mae Liberato · Software Engineer I at American Express
+        © 2026 · Jo-anne Mae Liberato
       </div>
     </footer>
   );
