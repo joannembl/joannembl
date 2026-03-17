@@ -1,7 +1,7 @@
 {
   "name": "joannembl",
   "version": "0.1.0",
-  "homepage": "https://joannembl.github.io",
+  "homepage": "https://joannembl.github.io/joannembl",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
