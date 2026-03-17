@@ -654,7 +654,7 @@ function Footer() {
         Jo-anne Mae Liberato
       </div>
       <div style={{ ...mono, fontSize: "0.68rem", color: "#7a6a5a", letterSpacing: "0.12em", marginBottom: "2rem" }}>
-        Phoenix, AZ · jmbliberato@gmail.com · (206) 397-2656
+        Phoenix, AZ · jmbliberato@gmail.com
       </div>
       <div style={{ display: "flex", justifyContent: "center", gap: "2rem", marginBottom: "2.5rem", flexWrap: "wrap" }}>
         {[
