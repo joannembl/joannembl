@@ -38,19 +38,9 @@
 
 ---
 
-## 📦 Projects
-
-### 👕 Kazoku Nightz
-Car culture brand and community
-
-> 🎨 Built and managed branding and digital presence  
-> 📈 Focused on growth, engagement, and user experience  
-
----
-
 ## 🌐 Connect With Me
 
-- 💼 LinkedIn: https://www.linkedin.com/in/jo-anne-mae-liberato  
+- 💼 LinkedIn: https://www.linkedin.com/in/jo-anne-mae-liberato-84920123b/
 
 ---
 
@@ -60,9 +50,3 @@ Car culture brand and community
 - ⚛️ Deepening expertise in React & frontend architecture  
 - 🧠 Writing cleaner, more scalable code  
 - 🚀 Building impactful, user-focused applications  
-
----
-
-<p align="center">
-  ⚡ "Consistency builds mastery."
-</p>
