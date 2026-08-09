@@ -3,11 +3,38 @@ import { useState, useEffect, useRef } from "react";
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
 const nav = [
-  { id: "about", label: "About" },
+  { id: "story", label: "Story" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
   { id: "contact", label: "Contact" },
+];
+
+const storyChapters = [
+  {
+    number: "01",
+    label: "Care",
+    title: "Precision started before software.",
+    copy: "My first professional chapter was in pharmacy, where accuracy, empathy, and dependable systems directly shaped people's experience. That work taught me to treat details as part of the outcome, not decoration.",
+  },
+  {
+    number: "02",
+    label: "Transition",
+    title: "Curiosity became a new craft.",
+    copy: "I moved into engineering through a registered apprenticeship at American Express and Multiverse, learning full-stack fundamentals while contributing in a real enterprise environment.",
+  },
+  {
+    number: "03",
+    label: "Scale",
+    title: "Front-end work became systems work.",
+    copy: "Today I build React and TypeScript interfaces across a multi-repository FinTech ecosystem—connecting APIs, modernizing legacy code, improving accessibility, and strengthening automated delivery.",
+  },
+  {
+    number: "04",
+    label: "Ownership",
+    title: "I build beyond the ticket.",
+    copy: "My independent products let me own the whole path: shaping an idea, designing the interface, modeling data, securing access, integrating services, and automating deployment.",
+  },
 ];
 
 const experience = [
@@ -256,6 +283,18 @@ const globalCss = `
     background: linear-gradient(90deg, var(--accent), var(--cyan));
   }
 
+  .story-card { position: relative; }
+  .story-card::after {
+    content: ""; position: absolute; left: 1.35rem; bottom: -1.35rem;
+    width: 1px; height: 1.35rem; background: var(--border-hover);
+  }
+  .story-card:last-child::after { display: none; }
+
+  .story-word {
+    background: linear-gradient(100deg, var(--text) 10%, var(--accent-bright) 58%, var(--cyan));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
   .skip-link {
     position: absolute; left: -999px; top: 0; z-index: 999;
     background: var(--accent); color: #08090d; padding: 0.75rem 1.25rem;
@@ -278,8 +317,9 @@ const globalCss = `
     .layout { flex-direction: column !important; }
     .hero-name { font-size: clamp(2rem,8vw,2.6rem) !important; }
     section { padding: 3.5rem 0 !important; }
-    .exp-grid, .proj-featured-grid, .proj-grid, .skills-grid { grid-template-columns: 1fr !important; }
+    .exp-grid, .proj-featured-grid, .proj-grid, .skills-grid, .story-grid { grid-template-columns: 1fr !important; }
     .exp-row { grid-template-columns: 1fr !important; gap: 0.4rem !important; }
+    .story-card { grid-template-columns: 2.8rem 1fr !important; }
   }
 `;
 
@@ -396,7 +436,7 @@ function Sidebar() {
           Front-End Software Engineer
         </p>
         <p className="sidebar-desc" style={{ fontSize: "0.94rem", color: "var(--text-body)", lineHeight: 1.75, maxWidth: "320px", marginBottom: "2.5rem" }}>
-          I build reliable, production-grade interfaces for enterprise FinTech applications, and ship full-stack products end to end in my own time. Based in Phoenix, AZ.
+          From pharmacy precision to production software, I build reliable interfaces and thoughtful full-stack products. Based in Phoenix, AZ.
         </p>
 
         <nav className="sidebar-nav" aria-label="Section navigation">
@@ -440,7 +480,7 @@ function Sidebar() {
 
 // ─── ABOUT ────────────────────────────────────────────────────────────────────
 
-function About() {
+function Story() {
   const [ref, inView] = useInView();
   const stats = [
     { num: "4+", label: "Years in production FinTech" },
@@ -449,18 +489,42 @@ function About() {
   ];
 
   return (
-    <section id="about" ref={ref} style={{
+    <section id="story" ref={ref} style={{
       padding: "5.5rem 0 4rem", opacity: inView ? 1 : 0,
       transform: inView ? "translateY(0)" : "translateY(14px)",
       transition: "opacity 0.6s ease, transform 0.6s ease",
     }}>
-      <Eyebrow>About</Eyebrow>
-      <p style={{ fontSize: "1.05rem", color: "var(--text)", lineHeight: 1.9, maxWidth: "620px", marginBottom: "1.2rem" }}>
-        I'm a front-end software engineer with four-plus years building reliable, data-intensive internal applications used daily by operations, servicing, support, product, and engineering teams at American Express.
+      <Eyebrow>The opening chapter</Eyebrow>
+      <h2 className="story-word" style={{ fontSize: "clamp(2.35rem,5vw,4.4rem)", fontWeight: 800, letterSpacing: "-0.045em", lineHeight: 1.02, maxWidth: "680px", marginBottom: "1.75rem" }}>
+        From precision to production.
+      </h2>
+      <p style={{ fontSize: "1.06rem", color: "var(--text)", lineHeight: 1.9, maxWidth: "620px", marginBottom: "1.2rem" }}>
+        My path into engineering did not begin with a computer science degree. It began in pharmacy, where small details carry real weight—and where reliable systems help people do important work with confidence.
       </p>
-      <p style={{ fontSize: "0.97rem", color: "var(--text-body)", lineHeight: 1.9, maxWidth: "620px", marginBottom: "2.75rem" }}>
-        My work spans complex search, monitoring, and workflow interfaces; legacy application modernization; accessibility improvements; and automated testing and CI/CD. Outside of enterprise work, I design and ship full-stack products — combining React front ends with authentication, relational data, APIs, serverless functions, and automated deployments — end to end, on my own.
+      <p style={{ fontSize: "0.97rem", color: "var(--text-body)", lineHeight: 1.9, maxWidth: "620px", marginBottom: "3rem" }}>
+        That same mindset now shapes the software I build: clear interfaces, resilient workflows, maintainable architecture, and thoughtful feedback at every step. The tools changed. The standard did not.
       </p>
+
+      <div className="story-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.35rem", marginBottom: "3.25rem" }}>
+        {storyChapters.map((chapter) => (
+          <article key={chapter.number} className="story-card" style={{
+            display: "grid", gridTemplateColumns: "3.4rem 1fr", gap: "1rem",
+            padding: "1.4rem", border: "1px solid var(--border)", borderRadius: "10px",
+            background: "linear-gradient(120deg, rgba(139,147,255,0.06), rgba(16,20,28,0.72) 48%, rgba(88,214,199,0.035))",
+          }}>
+            <div style={{ ...mono, width: "2.7rem", height: "2.7rem", display: "grid", placeItems: "center", borderRadius: "50%", border: "1px solid var(--border-hover)", color: "var(--accent-bright)", fontSize: "0.7rem" }}>
+              {chapter.number}
+            </div>
+            <div>
+              <div style={{ ...mono, color: "var(--cyan)", fontSize: "0.65rem", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "0.35rem" }}>{chapter.label}</div>
+              <h3 style={{ color: "var(--text)", fontSize: "1.03rem", marginBottom: "0.45rem" }}>{chapter.title}</h3>
+              <p style={{ color: "var(--text-body)", fontSize: "0.87rem", lineHeight: 1.72 }}>{chapter.copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div style={{ ...mono, color: "var(--text-muted)", fontSize: "0.7rem", letterSpacing: "0.06em", marginBottom: "1rem" }}>THE STORY SO FAR</div>
       <div style={{ display: "flex", gap: "2.75rem", flexWrap: "wrap" }}>
         {stats.map((s) => (
           <div key={s.label}>
@@ -469,6 +533,16 @@ function About() {
           </div>
         ))}
       </div>
+      <blockquote style={{
+        marginTop: "3rem", padding: "1.5rem 1.75rem", borderLeft: "2px solid var(--cyan)",
+        background: "linear-gradient(90deg, rgba(88,214,199,0.07), transparent)",
+        color: "var(--text)", fontSize: "clamp(1.05rem,2.2vw,1.3rem)", lineHeight: 1.6,
+      }}>
+        “Reliable software is a form of care.”
+        <span style={{ ...mono, display: "block", marginTop: "0.6rem", color: "var(--text-muted)", fontSize: "0.65rem", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+          The principle connecting every chapter
+        </span>
+      </blockquote>
     </section>
   );
 }
@@ -516,7 +590,7 @@ function Experience() {
   return (
     <section id="experience" style={{ padding: "4rem 0" }}>
       <Eyebrow>Experience</Eyebrow>
-      <SectionTitle>Where I've built</SectionTitle>
+      <SectionTitle>The work that shaped me</SectionTitle>
       <div>
         {experience.map((e, i) => <ExperienceItem key={e.role} e={e} i={i} />)}
       </div>
@@ -584,7 +658,7 @@ function Projects() {
   return (
     <section id="projects" style={{ padding: "4rem 0" }}>
       <Eyebrow>Projects</Eyebrow>
-      <SectionTitle>What I've shipped</SectionTitle>
+      <SectionTitle>Ideas I carried into production</SectionTitle>
 
       <div className="proj-featured-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.25rem", marginBottom: "1.25rem" }}>
         {featured.map((p, i) => <ProjectCard key={p.title} p={p} i={i} featured />)}
@@ -608,7 +682,7 @@ function Skills() {
       transition: "opacity 0.6s ease, transform 0.6s ease",
     }}>
       <Eyebrow>Skills</Eyebrow>
-      <SectionTitle>Tools I reach for</SectionTitle>
+      <SectionTitle>The toolkit behind the story</SectionTitle>
 
       <div className="skills-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.75rem 2.5rem", marginBottom: "3rem" }}>
         {skillGroups.map((g) => (
@@ -703,10 +777,10 @@ export default function Portfolio() {
 
   return (
     <div className="layout" style={{ display: "flex", minHeight: "100vh", maxWidth: "1400px", margin: "0 auto" }}>
-      <a href="#about" className="skip-link">Skip to content</a>
+      <a href="#story" className="skip-link">Skip to content</a>
       <Sidebar />
       <main className="content" style={{ width: "60%", padding: "0 4rem 0 4rem", maxWidth: "760px" }}>
-        <About />
+        <Story />
         <Experience />
         <Projects />
         <Skills />
