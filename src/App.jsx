@@ -2,151 +2,159 @@ import { useState, useEffect, useRef } from "react";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
-const projects = [
-  {
-    num: "001",
-    title: "Crafted Digital Mini OS",
-    desc: "An agency workflow platform for prospects, proposals, team workspaces, and demo websites. Includes Supabase authentication and RLS, protected Edge Functions, Google Places import, demo generation, and automated publishing to GitHub Pages.",
-    tags: ["React", "Supabase", "PostgreSQL", "Edge Functions", "GitHub Actions"],
-    accent: "#c94c1e",
-    link: "https://github.com/joannembl/crafted-digital-mini-os",
-    liveUrl: "https://joannembl.github.io/crafted-digital-mini-os/",
-    badge: "Featured Full-Stack Project",
-  },
-  {
-    num: "002",
-    title: "GarageBook",
-    desc: "A mobile-first vehicle logbook for maintenance, modifications, expenses, photos, and ownership history. Built with Next.js and TypeScript using Supabase SSR authentication, PostgreSQL, server actions, data import, and downloadable reports.",
-    tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Authentication"],
-    accent: "#3d6b4f",
-    link: "https://github.com/joannembl/garage-book",
-    badge: "Featured Full-Stack Project",
-  },
-  {
-    num: "003",
-    title: "Film Militia Storefront",
-    desc: "A TypeScript automotive storefront with vehicle selection and fitment flows, products and guides, cart state, customer garage and order areas, and admin tools. Integrates Shopify data with Supabase-backed services.",
-    tags: ["React", "TypeScript", "TanStack", "Supabase", "Shopify API"],
-    accent: "#7c1e3a",
-    link: "https://film-militia.lovable.app/",
-    sourceUrl: "https://github.com/joannembl/film-militia",
-  },
-  {
-    num: "004",
-    title: "Kazoku Nightz",
-    desc: "Ongoing work on a Japanese-inspired nightlife and automotive event website, including WordPress customization, WooCommerce shop and event integration, gallery management, responsive styling, and overall site improvements.",
-    tags: ["WordPress", "WooCommerce", "CSS", "Events", "E-commerce"],
-    accent: "#c94c1e",
-    link: "https://kazokunightz.com/",
-    liveUrl: "https://kazokunightz.com/",
-    badge: "Ongoing Project",
-  },
-  {
-    num: "005",
-    title: "Multiverse Apprenticeship Portfolio",
-    desc: "A curated compilation of technical projects and durable skills built during my 2022–2023 apprenticeship at American Express, sponsored by Multiverse. Covers React dashboards, state management, and Agile delivery.",
-    tags: ["React", "Redux", "JavaScript", "Agile"],
-    accent: "#3d6b4f",
-    link: "https://github.com/joannembl/multiverse-portfolio",
-  },
-  {
-    num: "006",
-    title: "Single-Page Application",
-    desc: "Fully-functional client-side SPA with multiple routes, global state management, accessibility standards, and a styled component library — built as part of Multiverse Workshop Project 1.",
-    tags: ["JavaScript", "React", "State Management", "Accessibility"],
-    accent: "#7c6fa0",
-    link: "https://github.com/joannembl/multiverse-workshop-project-1",
-  },
+const nav = [
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
+  { id: "contact", label: "Contact" },
 ];
 
 const experience = [
   {
-    date: "March 2024 — Present",
+    date: "Mar 2024 — Present",
     role: "Software Engineer I",
-    company: "American Express · Phoenix, AZ",
+    company: "American Express",
+    location: "Phoenix, AZ",
+    current: true,
     bullets: [
-      "Deliver production-ready features and shared platform improvements across a multi-repository ecosystem of internal applications.",
-      "Build reusable React and TypeScript components and custom hooks for data tables, filters, modals, URL state, forms, responsive navigation, loading states, and error handling.",
-      "Integrate front-end modules with versioned APIs using validated payloads, predictable state transitions, resilient response handling, and clear user feedback.",
-      "Modernize legacy applications through JavaScript-to-TypeScript migration, shared design patterns, internationalization, accessibility improvements, and dependency remediation.",
-      "Strengthen delivery with Jest, Vitest, React Testing Library, realistic API mocks, schema and type validation, GitHub Actions, and Jenkins.",
+      "Deliver production-ready features and shared platform improvements across a multi-repository ecosystem of internal applications used by operations, servicing, support, product, and engineering teams.",
+      "Build reusable React and TypeScript components and custom hooks for data tables, filters, modals, URL state, form submission, responsive navigation, loading states, and error handling.",
+      "Integrate front-end modules with versioned APIs, translating complex workflows into validated payloads, predictable state transitions, resilient response handling, and clear user feedback.",
+      "Modernize legacy applications through JavaScript-to-TypeScript migration, shared design patterns, internationalization, and accessibility improvements.",
+      "Strengthen delivery with Jest, Vitest, React Testing Library, realistic API mocks, schema and type validation, and CI/CD workflows using GitHub Actions and Jenkins.",
     ],
+    tags: ["React", "TypeScript", "Redux", "Jest", "GitHub Actions"],
   },
   {
-    date: "May 2022 — March 2024",
+    date: "May 2022 — Mar 2024",
     role: "Junior Software Engineer",
-    company: "American Express · Phoenix, AZ",
+    company: "American Express",
+    location: "Phoenix, AZ",
+    current: false,
     bullets: [
-      "Built responsive React and Redux applications for transaction search, data review, platform monitoring, operational dashboards, and form-driven workflows.",
-      "Developed advanced search experiences with dynamic filters, pagination, date ranges, expandable results, status indicators, and robust error and empty states.",
-      "Connected interfaces to enterprise APIs and Redux state with consistent request handling, data transformation, and access-aware experiences.",
+      "Built and enhanced responsive React and Redux applications supporting internal transaction search, data review, platform monitoring, and form-driven workflows.",
+      "Developed advanced search experiences with dynamic filters, pagination, date-range controls, expandable results, status indicators, and detail views.",
+      "Connected user interfaces to enterprise APIs and Redux state, supporting consistent request handling, data transformation, and access-aware experiences.",
       "Improved usability through reusable components, responsive layouts, accessible interactions, role-aware navigation, and design-system integration.",
-      "Collaborated through iterative delivery, pull-request feedback, technical documentation, production fixes, and shared platform integrations.",
     ],
+    tags: ["React", "Redux", "JavaScript", "Accessibility"],
+  },
+];
+
+const projects = [
+  {
+    title: "Crafted Digital Mini OS",
+    period: "2025 — Present",
+    featured: true,
+    desc: "An agency workflow platform for managing prospects, proposals, activities, demo websites, and team workspaces end to end.",
+    highlights: [
+      "Supabase authentication with role-aware workspaces and Row Level Security",
+      "Google Places import plus deterministic and AI-assisted demo site generation",
+      "Protected Deno Edge Functions and a preview-to-publish pipeline that deploys generated sites to GitHub Pages",
+    ],
+    tags: ["React", "Vite", "Supabase", "PostgreSQL", "Edge Functions", "GitHub Actions"],
+    link: "https://github.com/joannembl/crafted-digital-mini-os",
+    liveUrl: "https://joannembl.github.io/crafted-digital-mini-os/",
+  },
+  {
+    title: "GarageBook",
+    period: "2025",
+    featured: true,
+    desc: "A mobile-first digital vehicle logbook for tracking maintenance, modifications, expenses, photos, and ownership history.",
+    highlights: [
+      "Next.js and TypeScript with Supabase SSR authentication",
+      "PostgreSQL-backed data model with server actions",
+      "CSV/XLSX import and downloadable vehicle reports",
+    ],
+    tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "SSR Auth"],
+    link: "https://github.com/joannembl/garage-book",
+  },
+  {
+    title: "Film Militia Storefront",
+    period: "2024",
+    desc: "A TypeScript storefront for automotive window film, including vehicle fitment flows and admin tooling.",
+    highlights: [
+      "Vehicle selection and fitment flows across products and guides",
+      "Cart state, customer garage, and order areas",
+      "Shopify data integrated with Supabase-backed auth and services",
+    ],
+    tags: ["React", "TypeScript", "TanStack", "Supabase", "Shopify API"],
+    link: "https://github.com/joannembl/film-militia",
+    liveUrl: "https://film-militia.lovable.app/",
+  },
+  {
+    title: "Kazoku Nightz",
+    period: "Ongoing",
+    desc: "A Japanese-inspired nightlife and automotive event website with an ongoing WordPress build-out.",
+    highlights: [
+      "WooCommerce shop and event integration",
+      "Gallery management and responsive styling",
+      "Ongoing content and site improvements",
+    ],
+    tags: ["WordPress", "WooCommerce", "CSS", "E-commerce"],
+    link: "https://kazokunightz.com/",
+    liveUrl: "https://kazokunightz.com/",
+  },
+  {
+    title: "Multiverse Apprenticeship Portfolio",
+    period: "2022 — 2023",
+    desc: "A record of technical projects and durable skills built during a software engineering apprenticeship at American Express, sponsored by Multiverse.",
+    highlights: [
+      "React dashboards with state management",
+      "API integration and Agile delivery practice",
+    ],
+    tags: ["React", "Redux", "JavaScript", "Agile"],
+    link: "https://github.com/joannembl/multiverse-portfolio",
+  },
+  {
+    title: "Single-Page Application",
+    period: "2022",
+    desc: "A fully client-side SPA with multiple routes, global state, and a styled component library, built for Multiverse Workshop Project 1.",
+    highlights: [
+      "Client-side routing and global state management",
+      "Accessibility standards applied throughout",
+    ],
+    tags: ["JavaScript", "React", "Accessibility"],
+    link: "https://github.com/joannembl/multiverse-workshop-project-1",
   },
 ];
 
 const skillGroups = [
   {
     label: "Languages",
-    color: "#c94c1e",
-    skills: [
-      { name: "JavaScript (ES6+)" },
-      { name: "TypeScript" },
-      { name: "HTML5 & CSS3" },
-      { name: "Java" },
-    ],
+    skills: ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3", "Java"],
   },
   {
     label: "Frontend",
-    color: "#3d6b4f",
-    skills: [
-      { name: "React" },
-      { name: "Redux" },
-      { name: "Component Architecture" },
-      { name: "Responsive & Accessible UI" },
-    ],
+    skills: ["React", "Redux", "Component Architecture", "Responsive & Accessible UI", "Next.js"],
   },
   {
-    label: "Quality & Testing",
-    color: "#7c6fa0",
-    skills: [
-      { name: "Jest & React Testing Library" },
-      { name: "Vitest" },
-      { name: "WebdriverIO" },
-      { name: "Debugging & Code Review" },
-    ],
+    label: "Testing & Quality",
+    skills: ["Jest", "React Testing Library", "Vitest", "WebdriverIO", "Code Review"],
   },
   {
     label: "Data & Delivery",
-    color: "#d4a832",
-    skills: [
-      { name: "Supabase & PostgreSQL" },
-      { name: "REST APIs & Authentication" },
-      { name: "Serverless / Edge Functions" },
-      { name: "CI/CD & GitHub Actions" },
-    ],
+    skills: ["Supabase", "PostgreSQL", "REST APIs", "Authentication & RLS", "Edge Functions", "GitHub Actions", "Jenkins"],
   },
 ];
 
-const certificates = [
+const credentials = [
   {
-    icon: "◈",
     name: "Applied Full Stack Software Engineering",
     issuer: "Multiverse Certificate",
     date: "2022 – 2023",
   },
   {
-    icon: "🏛",
-    name: "Registered Apprenticeship Completion",
-    issuer: "U.S. Department of Labor · Software Engineer",
+    name: "Registered Apprenticeship Completion, Software Engineer",
+    issuer: "U.S. Department of Labor",
     date: "2023",
   },
 ];
 
-// ─── HOOK ─────────────────────────────────────────────────────────────────────
+// ─── HOOKS ─────────────────────────────────────────────────────────────────────
 
-function useInView(threshold = 0.1) {
+function useInView(threshold = 0.12) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
@@ -162,70 +170,97 @@ function useInView(threshold = 0.1) {
   return [ref, inView];
 }
 
+function useActiveSection(ids) {
+  const [active, setActive] = useState(ids[0]);
+  useEffect(() => {
+    const observers = [];
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActive(id); },
+        { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, [ids]);
+  return active;
+}
+
 // ─── GLOBAL STYLES ────────────────────────────────────────────────────────────
 
 const globalCss = `
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #faf7f2;
-    --ink: #1a1208;
-    --cream: #f3ede3;
-    --rust: #c94c1e;
-    --rust2: #e8623a;
-    --sage: #3d6b4f;
-    --gold: #d4a832;
-    --lavender: #7c6fa0;
-    --border: #e0d8cc;
-    --card: #ffffff;
-    --muted: #5a4e3e;
-    --faint: #9a8a7a;
+    --bg: #0a0c11;
+    --bg-alt: #0d1017;
+    --card: #10141c;
+    --card-hover: #141924;
+    --border: #212636;
+    --border-hover: #2c3348;
+    --text: #e8eaf1;
+    --text-body: #a9afc2;
+    --text-muted: #767d92;
+    --text-faint: #4c5266;
+    --accent: #8b93ff;
+    --accent-bright: #a7adff;
+    --accent-soft: rgba(139,147,255,0.1);
+    --amber: #f2b25c;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
     background: var(--bg);
-    color: var(--ink);
+    color: var(--text-body);
     line-height: 1.6;
   }
 
   a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
 
-  @keyframes cursorBlink {
+  ::selection { background: var(--accent); color: #08090d; }
+
+  @keyframes pulse {
     0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
+    50%       { opacity: 0.35; }
   }
 
-  .cursor-blink {
-    display: inline-block;
-    width: 3px;
-    height: 0.85em;
-    background: var(--rust);
-    vertical-align: middle;
-    margin-left: 5px;
-    animation: cursorBlink 1s infinite;
+  .skip-link {
+    position: absolute; left: -999px; top: 0; z-index: 999;
+    background: var(--accent); color: #08090d; padding: 0.75rem 1.25rem;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
   }
+  .skip-link:focus { left: 1rem; top: 1rem; }
 
-  @media (max-width: 768px) {
-    .hero-grid { grid-template-columns: 1fr !important; }
-    .hero-right-panel { display: none !important; }
-    .nav-links { gap: 1.25rem !important; }
-    nav { padding: 1rem 1.5rem !important; }
+  @media (max-width: 900px) {
+    .sidebar { position: static !important; height: auto !important; width: 100% !important;
+      padding: 2.25rem 1.5rem 1.5rem !important; border-right: none !important;
+      border-bottom: 1px solid var(--border) !important; }
+    .sidebar-nav { display: none !important; }
+    .sidebar-desc { max-width: none !important; }
+    .content { width: 100% !important; padding: 0 1.5rem !important; }
+    .layout { flex-direction: column !important; }
+    .hero-name { font-size: clamp(2rem,8vw,2.6rem) !important; }
+    section { padding: 3.5rem 0 !important; }
+    .exp-grid, .proj-featured-grid, .proj-grid, .skills-grid { grid-template-columns: 1fr !important; }
+    .exp-row { grid-template-columns: 1fr !important; gap: 0.4rem !important; }
   }
 `;
 
 // ─── STYLE HELPERS ────────────────────────────────────────────────────────────
 
-const mono = { fontFamily: "'DM Mono', monospace" };
-const serif = { fontFamily: "'Playfair Display', serif" };
+const mono = { fontFamily: "'JetBrains Mono', monospace" };
 
-function SectionTag({ children }) {
+function Eyebrow({ children }) {
   return (
-    <p style={{ ...mono, fontSize: "0.68rem", color: "var(--rust)", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "0.6rem" }}>
+    <p style={{ ...mono, fontSize: "0.72rem", color: "var(--accent)", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "1rem" }}>
       {children}
     </p>
   );
@@ -233,295 +268,169 @@ function SectionTag({ children }) {
 
 function SectionTitle({ children }) {
   return (
-    <h2 style={{ ...serif, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 900, lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+    <h2 style={{ fontSize: "clamp(1.5rem,3vw,1.9rem)", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.01em", marginBottom: "2.25rem" }}>
       {children}
     </h2>
   );
 }
 
-function Stripe() {
+function Tag({ children, tone = "default" }) {
   return (
-    <div style={{
-      height: "4px",
-      backgroundImage: "repeating-linear-gradient(90deg,var(--rust) 0,var(--rust) 12px,transparent 12px,transparent 20px)",
-      opacity: 0.18,
-    }} />
-  );
-}
-
-function SkillBar({ name, color, animate }) {
-  return (
-    <div style={{ marginBottom: "1.1rem" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.87rem", marginBottom: "0.4rem" }}>
-        <span>{name}</span>
-        <span aria-hidden="true" style={{ color }}>●</span>
-      </div>
-      <div style={{ height: "3px", background: "#e8e0d5", position: "relative", overflow: "hidden" }}>
-        <div style={{
-          position: "absolute", top: 0, left: 0, height: "100%",
-          width: animate ? "100%" : "0%",
-          background: color,
-          transition: "width 1.3s cubic-bezier(0.16,1,0.3,1)",
-        }} />
-      </div>
-    </div>
-  );
-}
-
-// ─── NAV ──────────────────────────────────────────────────────────────────────
-
-function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", h);
-    return () => window.removeEventListener("scroll", h);
-  }, []);
-
-  return (
-    <nav style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
-      display: "flex", justifyContent: "space-between", alignItems: "center",
-      padding: "1.1rem 3rem",
-      background: scrolled ? "rgba(250,247,242,0.93)" : "var(--bg)",
-      borderBottom: "1.5px solid var(--border)",
-      backdropFilter: scrolled ? "blur(12px)" : "none",
-      transition: "background 0.3s",
+    <span style={{
+      ...mono, fontSize: "0.68rem", letterSpacing: "0.03em",
+      padding: "0.3rem 0.65rem",
+      background: tone === "accent" ? "var(--accent-soft)" : "transparent",
+      border: `1px solid ${tone === "accent" ? "transparent" : "var(--border)"}`,
+      color: tone === "accent" ? "var(--accent-bright)" : "var(--text-muted)",
+      borderRadius: "4px",
+      display: "inline-block",
     }}>
-      <span style={{ ...serif, fontSize: "1.05rem", fontStyle: "italic", color: "var(--rust)" }}>
-        Jo-anne Liberato
-      </span>
-      <ul className="nav-links" style={{ display: "flex", gap: "2.25rem", listStyle: "none" }}>
-        {[["#projects","Projects"],["#experience","Experience"],["#skills","Skills"],["#certificates","Certs"]].map(([href, label]) => (
-          <li key={label}>
-            <a href={href}
-              style={{ ...mono, fontSize: "0.68rem", color: "var(--ink)", letterSpacing: "0.14em", textTransform: "uppercase", opacity: 0.55, transition: "opacity 0.2s, color 0.2s" }}
-              onMouseEnter={e => { e.target.style.opacity = 1; e.target.style.color = "var(--rust)"; }}
-              onMouseLeave={e => { e.target.style.opacity = 0.55; e.target.style.color = "var(--ink)"; }}>
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+      {children}
+    </span>
   );
 }
 
-// ─── HERO ─────────────────────────────────────────────────────────────────────
+function ExternalIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "4px", flexShrink: 0 }}>
+      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+      <path d="M15 3h6v6" />
+      <path d="M10 14L21 3" />
+    </svg>
+  );
+}
 
-function Hero() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { const t = setTimeout(() => setMounted(true), 80); return () => clearTimeout(t); }, []);
+function LinkRow({ href, label }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer"
+      style={{ ...mono, fontSize: "0.78rem", color: "var(--accent)", display: "inline-flex", alignItems: "center", fontWeight: 500 }}>
+      {label}<ExternalIcon />
+    </a>
+  );
+}
 
-  const fade = (delay) => ({
-    opacity: mounted ? 1 : 0,
-    transform: mounted ? "translateY(0)" : "translateY(20px)",
-    transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`,
-  });
+// ─── ICONS ────────────────────────────────────────────────────────────────────
+
+function GitHubIcon() {
+  return (
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 015.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.77.12 3.06.74.8 1.18 1.83 1.18 3.09 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.66.8.55A10.52 10.52 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/>
+    </svg>
+  );
+}
+function LinkedInIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.11 20.45H3.56V9h3.55v11.45z"/>
+    </svg>
+  );
+}
+function MailIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="2.5" y="4.5" width="19" height="15" rx="2"/>
+      <path d="M3 6l9 7 9-7"/>
+    </svg>
+  );
+}
+
+const socials = [
+  { Icon: GitHubIcon, label: "GitHub", href: "https://github.com/joannembl" },
+  { Icon: LinkedInIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/jmbliberato/" },
+  { Icon: MailIcon, label: "Email", href: "mailto:jmbliberato@gmail.com" },
+];
+
+// ─── SIDEBAR ──────────────────────────────────────────────────────────────────
+
+function Sidebar() {
+  const active = useActiveSection(nav.map((n) => n.id));
 
   return (
-    <section style={{ minHeight: "100vh", display: "grid", gridTemplateColumns: "1fr 1fr", paddingTop: "5rem" }} className="hero-grid">
-      <div style={{ padding: "5rem 3rem 4rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-        <div style={{ ...fade(0.1), display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
-          <span style={{ display: "block", width: "28px", height: "1.5px", background: "var(--rust)" }} />
-          <span style={{ ...mono, fontSize: "0.72rem", color: "var(--rust)", letterSpacing: "0.2em", textTransform: "uppercase" }}>
-          Front-End Software Engineer · React + TypeScript
-          </span>
-        </div>
-
-        <h1 style={{ ...fade(0.25), ...serif, fontSize: "clamp(2.8rem,5.5vw,5rem)", fontWeight: 900, lineHeight: 0.95, letterSpacing: "-0.02em", marginBottom: "0.3em" }}>
-          <span style={{ display: "block" }}>Jo-anne</span>
-          <span style={{ display: "block", WebkitTextStroke: "2px var(--ink)", color: "transparent" }}>
-            Liberato
-            <span className="cursor-blink" />
-          </span>
+    <aside className="sidebar" style={{
+      width: "40%", maxWidth: "460px", position: "sticky", top: 0, height: "100vh",
+      padding: "4.5rem 3.5rem 3rem 3.5rem", display: "flex", flexDirection: "column",
+      justifyContent: "space-between", borderRight: "1px solid var(--border)",
+    }}>
+      <div>
+        <h1 className="hero-name" style={{ fontSize: "clamp(1.9rem,2.6vw,2.4rem)", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "0.6rem" }}>
+          Jo-anne Mae Liberato
         </h1>
-
-        <p style={{ ...fade(0.4), ...serif, fontSize: "clamp(1rem,1.8vw,1.25rem)", fontStyle: "italic", color: "var(--lavender)", marginBottom: "2rem" }}>
-          Building reliable interfaces and thoughtful full-stack products.
+        <p style={{ ...mono, fontSize: "0.92rem", color: "var(--accent)", marginBottom: "1.5rem" }}>
+          Software Engineer
+        </p>
+        <p className="sidebar-desc" style={{ fontSize: "0.94rem", color: "var(--text-body)", lineHeight: 1.75, maxWidth: "320px", marginBottom: "2.5rem" }}>
+          I build reliable, production-grade interfaces for enterprise FinTech applications, and ship full-stack products end to end in my own time. Based in Phoenix, AZ.
         </p>
 
-        <p style={{ ...fade(0.5), fontSize: "0.97rem", lineHeight: 1.85, color: "var(--muted)", maxWidth: "440px", marginBottom: "2.5rem" }}>
-          Front-end Software Engineer at American Express with 4+ years in FinTech, building production applications with React, TypeScript, automated testing, and a focus on maintainability and user trust.
-        </p>
-
-        <div style={{ ...fade(0.6), display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3.5rem" }}>
-          {[
-            { label: "See My Work", href: "#projects", primary: true },
-            { label: "GitHub", href: "https://github.com/joannembl", primary: false },
-          ].map(({ label, href, primary }) => (
-            <a key={label} href={href}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel="noopener noreferrer"
-              style={{
-                ...mono, fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase",
-                padding: "0.8rem 1.8rem",
-                background: primary ? "var(--rust)" : "transparent",
-                color: primary ? "#fff" : "var(--ink)",
-                border: primary ? "none" : "1.5px solid var(--ink)",
-                transition: "all 0.22s", cursor: "pointer",
-              }}
-              onMouseEnter={e => {
-                if (primary) e.currentTarget.style.background = "var(--ink)";
-                else { e.currentTarget.style.background = "var(--ink)"; e.currentTarget.style.color = "var(--bg)"; }
-              }}
-              onMouseLeave={e => {
-                if (primary) e.currentTarget.style.background = "var(--rust)";
-                else { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--ink)"; }
-              }}>
-              {label}
-            </a>
-          ))}
-        </div>
-
-        <div style={{ ...fade(0.75), display: "flex", gap: "2.5rem", paddingTop: "2rem", borderTop: "1px solid var(--border)" }}>
-          {[["4+", "Years at Amex"], ["6", "Selected Projects"], ["2", "Credentials"]].map(([num, label]) => (
-            <div key={label}>
-              <span style={{ ...serif, fontSize: "2rem", fontWeight: 700, color: "var(--rust)", display: "block" }}>{num}</span>
-              <span style={{ ...mono, fontSize: "0.65rem", color: "var(--faint)", letterSpacing: "0.12em", textTransform: "uppercase" }}>{label}</span>
-            </div>
-          ))}
-        </div>
+        <nav className="sidebar-nav" aria-label="Section navigation">
+          <ul>
+            {nav.map((n) => (
+              <li key={n.id} style={{ marginBottom: "1rem" }}>
+                <a href={`#${n.id}`}
+                  style={{
+                    ...mono, fontSize: "0.72rem", letterSpacing: "0.14em", textTransform: "uppercase",
+                    color: active === n.id ? "var(--text)" : "var(--text-faint)",
+                    display: "flex", alignItems: "center", gap: "0.85rem",
+                    transition: "color 0.2s",
+                  }}>
+                  <span style={{
+                    display: "block", height: "1.5px",
+                    width: active === n.id ? "2.25rem" : "1.25rem",
+                    background: active === n.id ? "var(--accent)" : "var(--text-faint)",
+                    transition: "width 0.25s, background 0.25s",
+                  }} />
+                  {n.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
 
-      {/* Right panel */}
-      <div className="hero-right-panel" style={{ background: "var(--cream)", position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        {[420, 310, 200].map(size => (
-          <div key={size} style={{ position: "absolute", width: size, height: size, borderRadius: "50%", border: "1px solid var(--border)" }} />
-        ))}
-        <div style={{ position: "absolute", width: 260, height: 260, borderRadius: "50%", background: "var(--rust)", opacity: 0.1, top: "22%", left: "30%" }} />
-        <div style={{ position: "absolute", width: 160, height: 160, borderRadius: "50%", background: "var(--lavender)", opacity: 0.15, top: "30%", left: "20%" }} />
-        <span style={{ position: "relative", zIndex: 2, ...serif, fontSize: "5.5rem", fontWeight: 900, fontStyle: "italic", color: "var(--rust)" }}>JL</span>
-        {[
-          { text: "React", top: "18%", left: "12%" },
-          { text: "TypeScript", top: "72%", left: "55%" },
-          { text: "Fintech", top: "55%", left: "8%" },
-          { text: "Amex", top: "20%", right: "10%" },
-          { text: "Supabase", bottom: "22%", left: "12%" },
-          { text: "Testing", bottom: "32%", right: "12%" },
-        ].map(({ text, ...pos }) => (
-          <span key={text} style={{ position: "absolute", ...mono, fontSize: "0.62rem", color: "var(--rust)", letterSpacing: "0.12em", opacity: 0.45, ...pos }}>
-            {text}
-          </span>
+      <div style={{ display: "flex", gap: "1.35rem" }}>
+        {socials.map(({ Icon, label, href }) => (
+          <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+            style={{ color: "var(--text-muted)", transition: "color 0.2s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-bright)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}>
+            <Icon />
+          </a>
         ))}
       </div>
-    </section>
+    </aside>
   );
 }
 
-// ─── PROJECTS ─────────────────────────────────────────────────────────────────
+// ─── ABOUT ────────────────────────────────────────────────────────────────────
 
-function Projects() {
-  const [ref, inView] = useInView(0.08);
-  const [hovered, setHovered] = useState(null);
-
-  const featured = projects.slice(0, 2);
-  const rest = projects.slice(2);
+function About() {
+  const [ref, inView] = useInView();
+  const stats = [
+    { num: "4+", label: "Years in production FinTech" },
+    { num: "6", label: "Shipped projects" },
+    { num: "2", label: "Credentials earned" },
+  ];
 
   return (
-    <section id="projects" style={{ background: "var(--cream)" }}>
-      <div ref={ref} style={{ maxWidth: "1120px", margin: "0 auto", padding: "6rem 3rem" }}>
-        <div style={{ marginBottom: "3.5rem" }}>
-          <SectionTag>01 — Projects</SectionTag>
-          <SectionTitle>Selected <em style={{ fontStyle: "italic", color: "var(--rust)" }}>Work</em></SectionTitle>
-        </div>
-
-        {/* Featured projects — full-width cards */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "1.5rem", marginBottom: "1.5rem" }}>
-          {featured.map((p, i) => (
-            <div key={p.num}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
-              style={{
-                background: "var(--card)", border: "1.5px solid var(--border)",
-                padding: "2.25rem 2rem", position: "relative", overflow: "hidden",
-                transform: hovered === i ? "translateY(-4px)" : "translateY(0)",
-                boxShadow: hovered === i ? `0 14px 48px ${p.accent}25` : "none",
-                opacity: inView ? 1 : 0,
-                transition: "transform 0.25s, box-shadow 0.25s, opacity 0.6s",
-                transitionDelay: `${i * 0.1}s`,
-              }}>
-              {/* Color accent bar */}
-              <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "3px", background: p.accent }} />
-
-              {/* Badge */}
-              {p.badge && (
-                <div style={{
-                  display: "inline-flex", alignItems: "center", gap: "0.4rem",
-                  marginBottom: "1rem",
-                  padding: "0.28rem 0.75rem",
-                  background: p.badge === "In Progress" ? "rgba(124,30,58,0.08)" : "rgba(201,76,30,0.08)",
-                  border: `1px solid ${p.badge === "In Progress" ? "rgba(124,30,58,0.25)" : "rgba(201,76,30,0.25)"}`,
-                }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: p.accent, display: "block",
-                    ...(p.badge === "In Progress" ? { animation: "cursorBlink 1.4s infinite" } : {}) }} />
-                  <span style={{ ...mono, fontSize: "0.6rem", letterSpacing: "0.1em", textTransform: "uppercase", color: p.accent }}>{p.badge}</span>
-                </div>
-              )}
-
-              <div style={{ ...mono, fontSize: "0.62rem", color: "var(--faint)", letterSpacing: "0.15em", marginBottom: "0.75rem" }}>{p.num}</div>
-              <div style={{ ...serif, fontSize: "1.25rem", fontWeight: 700, marginBottom: "0.7rem" }}>{p.title}</div>
-              <p style={{ fontSize: "0.9rem", color: "var(--muted)", lineHeight: 1.8, marginBottom: "1.5rem" }}>{p.desc}</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.45rem", marginBottom: "1.5rem" }}>
-                {p.tags.map(t => (
-                  <span key={t} style={{ ...mono, fontSize: "0.62rem", letterSpacing: "0.07em", padding: "0.3rem 0.65rem", border: "1px solid var(--border)", color: "#7a6a5a" }}>{t}</span>
-                ))}
-              </div>
-              <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
-                {p.liveUrl && (
-                  <a href={p.liveUrl} target="_blank" rel="noopener noreferrer"
-                    style={{ ...mono, fontSize: "0.68rem", color: p.accent, letterSpacing: "0.08em", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
-                    Visit Live Site ↗
-                  </a>
-                )}
-                <a href={p.link} target="_blank" rel="noopener noreferrer"
-                  style={{ ...mono, fontSize: "0.68rem", color: p.liveUrl ? "var(--faint)" : p.accent, letterSpacing: "0.08em", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
-                  {p.link.includes("github") ? "View on GitHub →" : "View Project →"}
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Rest of projects — standard grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem" }}>
-          {rest.map((p, i) => (
-            <div key={p.num}
-              onMouseEnter={() => setHovered(i + 2)}
-              onMouseLeave={() => setHovered(null)}
-              style={{
-                background: "var(--card)", border: "1.5px solid var(--border)",
-                padding: "1.75rem", position: "relative", overflow: "hidden",
-                transform: hovered === i + 2 ? "translateY(-3px)" : "translateY(0)",
-                boxShadow: hovered === i + 2 ? `0 10px 32px ${p.accent}1a` : "none",
-                opacity: inView ? 1 : 0,
-                transition: "transform 0.25s, box-shadow 0.25s, opacity 0.6s",
-                transitionDelay: `${(i + 2) * 0.08}s`,
-              }}>
-              <div style={{ position: "absolute", top: 0, left: 0, width: "4px", height: "100%", background: p.accent }} />
-              <div style={{ ...mono, fontSize: "0.62rem", color: "var(--faint)", letterSpacing: "0.15em", marginBottom: "1rem" }}>{p.num}</div>
-              <div style={{ ...serif, fontSize: "1.05rem", fontWeight: 700, marginBottom: "0.5rem" }}>{p.title}</div>
-              <p style={{ fontSize: "0.85rem", color: "var(--muted)", lineHeight: 1.75, marginBottom: "1.25rem" }}>{p.desc}</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: "1.25rem" }}>
-                {p.tags.map(t => (
-                  <span key={t} style={{ ...mono, fontSize: "0.6rem", letterSpacing: "0.07em", padding: "0.25rem 0.55rem", border: "1px solid var(--border)", color: "#8a7a6a" }}>{t}</span>
-                ))}
-              </div>
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-                <a href={p.link} target="_blank" rel="noopener noreferrer"
-                  style={{ ...mono, fontSize: "0.65rem", color: "var(--rust)", letterSpacing: "0.08em" }}>
-                  {p.link.includes("github") ? "View on GitHub →" : "Visit Live Site ↗"}
-                </a>
-                {p.sourceUrl && (
-                  <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer"
-                    style={{ ...mono, fontSize: "0.65rem", color: "var(--faint)", letterSpacing: "0.08em" }}>
-                    View Source →
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+    <section id="about" ref={ref} style={{
+      padding: "5.5rem 0 4rem", opacity: inView ? 1 : 0,
+      transform: inView ? "translateY(0)" : "translateY(14px)",
+      transition: "opacity 0.6s ease, transform 0.6s ease",
+    }}>
+      <Eyebrow>About</Eyebrow>
+      <p style={{ fontSize: "1.05rem", color: "var(--text)", lineHeight: 1.9, maxWidth: "620px", marginBottom: "1.2rem" }}>
+        I'm a front-end software engineer with four-plus years building reliable, data-intensive internal applications used daily by operations, servicing, support, product, and engineering teams at American Express.
+      </p>
+      <p style={{ fontSize: "0.97rem", color: "var(--text-body)", lineHeight: 1.9, maxWidth: "620px", marginBottom: "2.75rem" }}>
+        My work spans complex search, monitoring, and workflow interfaces; legacy application modernization; accessibility improvements; and automated testing and CI/CD. Outside of enterprise work, I design and ship full-stack products — combining React front ends with authentication, relational data, APIs, serverless functions, and automated deployments — end to end, on my own.
+      </p>
+      <div style={{ display: "flex", gap: "2.75rem", flexWrap: "wrap" }}>
+        {stats.map((s) => (
+          <div key={s.label}>
+            <div style={{ fontSize: "1.9rem", fontWeight: 800, color: "var(--text)" }}>{s.num}</div>
+            <div style={{ ...mono, fontSize: "0.68rem", color: "var(--text-muted)", letterSpacing: "0.06em", maxWidth: "120px" }}>{s.label}</div>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -529,37 +438,117 @@ function Projects() {
 
 // ─── EXPERIENCE ───────────────────────────────────────────────────────────────
 
+function ExperienceItem({ e, i }) {
+  const [ref, inView] = useInView(0.15);
+  return (
+    <div ref={ref} className="exp-row" style={{
+      display: "grid", gridTemplateColumns: "150px 1fr", gap: "1.5rem",
+      padding: "1.75rem 0", borderTop: i === 0 ? "1px solid var(--border)" : "none",
+      borderBottom: "1px solid var(--border)",
+      opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(12px)",
+      transition: `opacity 0.5s ease ${i * 0.08}s, transform 0.5s ease ${i * 0.08}s`,
+    }}>
+      <div>
+        <div style={{ ...mono, fontSize: "0.74rem", color: "var(--text-muted)", marginBottom: "0.5rem" }}>{e.date}</div>
+        {e.current && (
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--amber)", animation: "pulse 1.8s infinite" }} />
+            <span style={{ ...mono, fontSize: "0.62rem", color: "var(--amber)", letterSpacing: "0.06em", textTransform: "uppercase" }}>Current</span>
+          </div>
+        )}
+      </div>
+      <div>
+        <h3 style={{ fontSize: "1.08rem", fontWeight: 700, color: "var(--text)", marginBottom: "0.15rem" }}>{e.role}</h3>
+        <div style={{ ...mono, fontSize: "0.78rem", color: "var(--accent)", marginBottom: "1.1rem" }}>{e.company} · {e.location}</div>
+        <ul style={{ marginBottom: "1.25rem" }}>
+          {e.bullets.map((b, bi) => (
+            <li key={bi} style={{ display: "flex", gap: "0.65rem", fontSize: "0.89rem", color: "var(--text-body)", lineHeight: 1.75, marginBottom: "0.55rem", maxWidth: "600px" }}>
+              <span style={{ color: "var(--accent)", flexShrink: 0 }}>▸</span>{b}
+            </li>
+          ))}
+        </ul>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+          {e.tags.map((t) => <Tag key={t}>{t}</Tag>)}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Experience() {
+  return (
+    <section id="experience" style={{ padding: "4rem 0" }}>
+      <Eyebrow>Experience</Eyebrow>
+      <SectionTitle>Where I've built</SectionTitle>
+      <div>
+        {experience.map((e, i) => <ExperienceItem key={e.role} e={e} i={i} />)}
+      </div>
+    </section>
+  );
+}
+
+// ─── PROJECTS ─────────────────────────────────────────────────────────────────
+
+function ProjectCard({ p, i, featured }) {
   const [ref, inView] = useInView(0.1);
+  const [hovered, setHovered] = useState(false);
 
   return (
-    <section id="experience" style={{ background: "var(--bg)" }}>
-      <div ref={ref} style={{ maxWidth: "1120px", margin: "0 auto", padding: "6rem 3rem" }}>
-        <div style={{ marginBottom: "3.5rem" }}>
-          <SectionTag>02 — Experience</SectionTag>
-          <SectionTitle>Work <em style={{ fontStyle: "italic", color: "var(--rust)" }}>History</em></SectionTitle>
-        </div>
-        <div style={{ position: "relative", paddingLeft: "2.5rem" }}>
-          <div style={{ position: "absolute", left: 0, top: 10, bottom: 0, width: "1.5px", background: "linear-gradient(to bottom, var(--rust), transparent)" }} />
-          {experience.map((e, i) => (
-            <div key={i} style={{
-              position: "relative", paddingBottom: "3.5rem",
-              opacity: inView ? 1 : 0,
-              transform: inView ? "translateY(0)" : "translateY(20px)",
-              transition: `opacity 0.6s ease ${i * 0.18}s, transform 0.6s ease ${i * 0.18}s`,
-            }}>
-              <div style={{ position: "absolute", left: "-2.85rem", top: "8px", width: "10px", height: "10px", borderRadius: "50%", background: "var(--rust)", border: "2px solid var(--bg)", boxShadow: "0 0 0 3px rgba(201,76,30,0.2)" }} />
-              <div style={{ ...mono, fontSize: "0.68rem", color: "var(--rust)", letterSpacing: "0.12em", marginBottom: "0.5rem" }}>{e.date}</div>
-              <div style={{ ...serif, fontSize: "1.2rem", fontWeight: 700, marginBottom: "0.25rem" }}>{e.role}</div>
-              <div style={{ ...mono, fontSize: "0.75rem", color: "var(--lavender)", marginBottom: "0.9rem" }}>{e.company}</div>
-              <ul style={{ paddingLeft: "1.1rem" }}>
-                {e.bullets.map((b, bi) => (
-                  <li key={bi} style={{ fontSize: "0.88rem", color: "var(--muted)", lineHeight: 1.8, marginBottom: "0.3rem", maxWidth: "640px" }}>{b}</li>
-                ))}
-              </ul>
-            </div>
+    <div ref={ref}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: hovered ? "var(--card-hover)" : "var(--card)",
+        border: `1px solid ${hovered ? "var(--border-hover)" : "var(--border)"}`,
+        borderRadius: "10px",
+        padding: featured ? "2rem" : "1.6rem",
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(14px)",
+        transition: `opacity 0.5s ease ${i * 0.06}s, transform 0.5s ease ${i * 0.06}s, border-color 0.2s, background 0.2s`,
+        display: "flex", flexDirection: "column", height: "100%",
+      }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "0.75rem" }}>
+        <h3 style={{ fontSize: featured ? "1.15rem" : "1.02rem", fontWeight: 700, color: "var(--text)" }}>{p.title}</h3>
+        <span style={{ ...mono, fontSize: "0.66rem", color: "var(--text-faint)", flexShrink: 0, marginLeft: "0.75rem" }}>{p.period}</span>
+      </div>
+      <p style={{ fontSize: "0.87rem", color: "var(--text-body)", lineHeight: 1.75, marginBottom: featured ? "1.1rem" : "0.9rem" }}>{p.desc}</p>
+
+      {featured && (
+        <ul style={{ marginBottom: "1.35rem" }}>
+          {p.highlights.map((h, hi) => (
+            <li key={hi} style={{ display: "flex", gap: "0.6rem", fontSize: "0.84rem", color: "var(--text-body)", lineHeight: 1.7, marginBottom: "0.4rem" }}>
+              <span style={{ color: "var(--accent)", flexShrink: 0 }}>▸</span>{h}
+            </li>
           ))}
-        </div>
+        </ul>
+      )}
+
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: "1.35rem", marginTop: featured ? 0 : "auto" }}>
+        {p.tags.map((t) => <Tag key={t}>{t}</Tag>)}
+      </div>
+
+      <div style={{ display: "flex", gap: "1.35rem", marginTop: "auto" }}>
+        {p.liveUrl && <LinkRow href={p.liveUrl} label="Live site" />}
+        <LinkRow href={p.link} label={p.link.includes("github") ? "Source" : "Repo"} />
+      </div>
+    </div>
+  );
+}
+
+function Projects() {
+  const featured = projects.filter((p) => p.featured);
+  const rest = projects.filter((p) => !p.featured);
+
+  return (
+    <section id="projects" style={{ padding: "4rem 0" }}>
+      <Eyebrow>Projects</Eyebrow>
+      <SectionTitle>What I've shipped</SectionTitle>
+
+      <div className="proj-featured-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.25rem", marginBottom: "1.25rem" }}>
+        {featured.map((p, i) => <ProjectCard key={p.title} p={p} i={i} featured />)}
+      </div>
+      <div className="proj-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
+        {rest.map((p, i) => <ProjectCard key={p.title} p={p} i={i + 2} />)}
       </div>
     </section>
   );
@@ -568,124 +557,93 @@ function Experience() {
 // ─── SKILLS ───────────────────────────────────────────────────────────────────
 
 function Skills() {
-  const [ref, inView] = useInView(0.1);
+  const [ref, inView] = useInView();
 
   return (
-    <section id="skills" style={{ background: "var(--cream)" }}>
-      <div ref={ref} style={{ maxWidth: "1120px", margin: "0 auto", padding: "6rem 3rem" }}>
-        <div style={{ marginBottom: "3.5rem" }}>
-          <SectionTag>03 — Skills</SectionTag>
-          <SectionTitle>Tech <em style={{ fontStyle: "italic", color: "var(--rust)" }}>Stack</em></SectionTitle>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem" }}>
-          {skillGroups.map((group, gi) => (
-            <div key={group.label} style={{
-              background: "var(--card)", border: "1.5px solid var(--border)", padding: "2rem",
-              opacity: inView ? 1 : 0,
-              transform: inView ? "translateY(0)" : "translateY(16px)",
-              transition: `opacity 0.6s ease ${gi * 0.1}s, transform 0.6s ease ${gi * 0.1}s`,
-            }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.75rem", paddingBottom: "1rem", borderBottom: "1px solid var(--border)" }}>
-                <div style={{ width: "10px", height: "10px", borderRadius: "50%", background: group.color, flexShrink: 0 }} />
-                <span style={{ ...mono, fontSize: "0.68rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>{group.label}</span>
-              </div>
-              {group.skills.map(s => (
-                <SkillBar key={s.name} name={s.name} color={group.color} animate={inView} />
-              ))}
+    <section id="skills" ref={ref} style={{
+      padding: "4rem 0", opacity: inView ? 1 : 0,
+      transform: inView ? "translateY(0)" : "translateY(14px)",
+      transition: "opacity 0.6s ease, transform 0.6s ease",
+    }}>
+      <Eyebrow>Skills</Eyebrow>
+      <SectionTitle>Tools I reach for</SectionTitle>
+
+      <div className="skills-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.75rem 2.5rem", marginBottom: "3rem" }}>
+        {skillGroups.map((g) => (
+          <div key={g.label}>
+            <div style={{ ...mono, fontSize: "0.68rem", color: "var(--text-muted)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.9rem" }}>
+              {g.label}
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── CERTIFICATES ─────────────────────────────────────────────────────────────
-
-function Certificates() {
-  const [ref, inView] = useInView(0.1);
-  const [hovered, setHovered] = useState(null);
-
-  return (
-    <section id="certificates" style={{ background: "var(--bg)" }}>
-      <div ref={ref} style={{ maxWidth: "1120px", margin: "0 auto", padding: "6rem 3rem" }}>
-        <div style={{ marginBottom: "3.5rem" }}>
-          <SectionTag>04 — Certificates</SectionTag>
-          <SectionTitle>Credentials & <em style={{ fontStyle: "italic", color: "var(--rust)" }}>Achievements</em></SectionTitle>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "1.25rem", marginBottom: "3rem" }}>
-          {certificates.map((c, i) => (
-            <div key={i}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
-              style={{
-                background: "var(--card)",
-                border: `1.5px solid ${hovered === i ? "var(--rust)" : "var(--border)"}`,
-                padding: "2rem", display: "flex", gap: "1.5rem", alignItems: "flex-start",
-                opacity: inView ? 1 : 0,
-                transform: inView ? "translateY(0)" : "translateY(16px)",
-                transition: `border-color 0.25s, opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`,
-              }}>
-              <div style={{ width: "52px", height: "52px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.5rem", border: "1.5px solid var(--border)" }}>
-                {c.icon}
-              </div>
-              <div>
-                <div style={{ ...serif, fontSize: "1.05rem", fontWeight: 700, marginBottom: "0.35rem" }}>{c.name}</div>
-                <div style={{ ...mono, fontSize: "0.68rem", color: "var(--lavender)", marginBottom: "0.4rem", letterSpacing: "0.04em" }}>{c.issuer}</div>
-                <div style={{ ...mono, fontSize: "0.63rem", color: "var(--faint)" }}>{c.date}</div>
-              </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+              {g.skills.map((s) => <Tag key={s} tone="accent">{s}</Tag>)}
             </div>
-          ))}
-        </div>
-
-        <div style={{
-          background: "var(--cream)", border: "1.5px solid var(--border)",
-          borderLeft: "4px solid var(--rust)", padding: "2rem 2.5rem",
-          opacity: inView ? 1 : 0,
-          transition: "opacity 0.7s ease 0.3s",
-        }}>
-          <div style={{ ...mono, fontSize: "0.68rem", color: "var(--rust)", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "0.75rem" }}>
-            Apprenticeship Highlight
           </div>
-          <p style={{ fontSize: "0.93rem", color: "var(--muted)", lineHeight: 1.85, maxWidth: "680px" }}>
-            Part of the <strong style={{ color: "var(--ink)" }}>first cohort of apprentices at American Express</strong>, paving the way for non-traditional engineers entering the industry. Earned a U.S. Department of Labor Registered Apprenticeship — a nationally recognised credential — while building production software full-time.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── FOOTER ───────────────────────────────────────────────────────────────────
-
-function Footer() {
-  return (
-    <footer style={{ background: "var(--ink)", color: "var(--bg)", padding: "3.5rem 3rem", textAlign: "center" }}>
-      <div style={{ ...serif, fontSize: "1.7rem", fontStyle: "italic", color: "#e8623a", marginBottom: "0.5rem" }}>
-        Jo-anne Mae Liberato
-      </div>
-      <div style={{ ...mono, fontSize: "0.68rem", color: "#7a6a5a", letterSpacing: "0.12em", marginBottom: "2rem" }}>
-        Phoenix, AZ · jmbliberato@gmail.com
-      </div>
-      <div style={{ display: "flex", justifyContent: "center", gap: "2rem", marginBottom: "2.5rem", flexWrap: "wrap" }}>
-        {[
-          ["GitHub", "https://github.com/joannembl"],
-          ["LinkedIn", "https://www.linkedin.com/in/jmbliberato/"],
-          ["Email", "mailto:jmbliberato@gmail.com"],
-        ].map(([label, href]) => (
-          <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-            style={{ ...mono, fontSize: "0.68rem", color: "#a0907e", letterSpacing: "0.1em", transition: "color 0.2s" }}
-            onMouseEnter={e => e.target.style.color = "#e8623a"}
-            onMouseLeave={e => e.target.style.color = "#a0907e"}>
-            {label}
-          </a>
         ))}
       </div>
-      <div style={{ ...mono, fontSize: "0.6rem", color: "#4a3f30", letterSpacing: "0.1em" }}>
-        © 2026 · Jo-anne Mae Liberato
+
+      <div style={{ ...mono, fontSize: "0.68rem", color: "var(--text-muted)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.9rem" }}>
+        Credentials
       </div>
-    </footer>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.9rem" }}>
+        {credentials.map((c) => (
+          <div key={c.name} style={{ display: "flex", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", padding: "0.9rem 0", borderBottom: "1px solid var(--border)" }}>
+            <div>
+              <div style={{ fontSize: "0.9rem", color: "var(--text)", fontWeight: 600, marginBottom: "0.2rem" }}>{c.name}</div>
+              <div style={{ ...mono, fontSize: "0.72rem", color: "var(--accent)" }}>{c.issuer}</div>
+            </div>
+            <div style={{ ...mono, fontSize: "0.72rem", color: "var(--text-faint)", alignSelf: "center" }}>{c.date}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ─── CONTACT / FOOTER ─────────────────────────────────────────────────────────
+
+function Contact() {
+  const [ref, inView] = useInView();
+  return (
+    <section id="contact" ref={ref} style={{
+      padding: "5rem 0 3rem", opacity: inView ? 1 : 0,
+      transform: inView ? "translateY(0)" : "translateY(14px)",
+      transition: "opacity 0.6s ease, transform 0.6s ease",
+    }}>
+      <Eyebrow>Contact</Eyebrow>
+      <h2 style={{ fontSize: "clamp(1.6rem,3.5vw,2.1rem)", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.01em", lineHeight: 1.3, marginBottom: "1.1rem", maxWidth: "540px" }}>
+        Open to Software Engineer II opportunities.
+      </h2>
+      <p style={{ fontSize: "0.95rem", color: "var(--text-body)", lineHeight: 1.8, maxWidth: "480px", marginBottom: "2rem" }}>
+        I'm always glad to talk about front-end architecture, FinTech-scale reliability, or a role where I can take on more ownership. The fastest way to reach me is email.
+      </p>
+      <a href="mailto:jmbliberato@gmail.com"
+        style={{
+          ...mono, fontSize: "0.8rem", letterSpacing: "0.04em",
+          display: "inline-flex", alignItems: "center", gap: "0.6rem",
+          padding: "0.9rem 1.75rem", background: "var(--accent)", color: "#08090d",
+          borderRadius: "6px", fontWeight: 600, transition: "background 0.2s",
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.background = "var(--accent-bright)")}
+        onMouseLeave={(e) => (e.currentTarget.style.background = "var(--accent)")}>
+        <MailIcon /> jmbliberato@gmail.com
+      </a>
+
+      <footer style={{ marginTop: "5.5rem", paddingTop: "2rem", borderTop: "1px solid var(--border)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
+        <span style={{ ...mono, fontSize: "0.68rem", color: "var(--text-faint)" }}>
+          © 2026 Jo-anne Mae Liberato
+        </span>
+        <div style={{ display: "flex", gap: "1.25rem" }}>
+          {socials.map(({ Icon, label, href }) => (
+            <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+              style={{ color: "var(--text-muted)", transition: "color 0.2s" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-bright)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}>
+              <Icon />
+            </a>
+          ))}
+        </div>
+      </footer>
+    </section>
   );
 }
 
@@ -702,18 +660,16 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div style={{ minHeight: "100vh" }}>
-      <Nav />
-      <Hero />
-      <Stripe />
-      <Projects />
-      <Stripe />
-      <Experience />
-      <Stripe />
-      <Skills />
-      <Stripe />
-      <Certificates />
-      <Footer />
+    <div className="layout" style={{ display: "flex", minHeight: "100vh", maxWidth: "1400px", margin: "0 auto" }}>
+      <a href="#about" className="skip-link">Skip to content</a>
+      <Sidebar />
+      <main className="content" style={{ width: "60%", padding: "0 4rem 0 4rem", maxWidth: "760px" }}>
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
     </div>
   );
 }
