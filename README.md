@@ -6,15 +6,15 @@
 
 <p align="center">
   <a href="https://joannembl.github.io/joannembl/">Portfolio</a> ·
-  <a href="https://www.linkedin.com/in/jo-anne-mae-liberato-84920123b/">LinkedIn</a> ·
+  <a href="https://www.linkedin.com/in/jmbliberato/">LinkedIn</a> ·
   <a href="https://github.com/joannembl">GitHub</a>
 </p>
 
 ## About
 
-I'm a front-end software engineer in Phoenix with 4+ years at American Express, where I build and maintain production web applications in a large-scale FinTech environment. My work spans reusable UI components, data-driven dashboards, automated testing, code review, documentation, and Agile delivery.
+I'm a front-end software engineer in Phoenix with four years of experience building reliable, data-intensive internal applications for operations, servicing, support, product, and engineering teams. I specialize in React, TypeScript, JavaScript, Redux, reusable component architecture, and API-driven user experiences.
 
-I care about clear interfaces, strong type safety, maintainable component architecture, and the engineering practices that make software dependable in production. Outside of my enterprise work, I build full-stack products that combine polished React experiences with authentication, relational data, APIs, serverless functions, and automated deployments.
+My work includes complex search, monitoring, and workflow interfaces; responsive and accessible UI improvements; legacy application modernization; automated testing; and CI/CD. Outside of my enterprise work, I build full-stack products that combine polished React experiences with authentication, relational data, APIs, serverless functions, and automated deployments.
 
 ## Featured projects
 
@@ -30,17 +30,17 @@ A mobile-first digital vehicle logbook for tracking maintenance, modifications, 
 
 `Next.js` `React` `TypeScript` `Supabase` `PostgreSQL` `SSR Authentication` `Server Actions` `Data Import/Export`
 
-### [Film Militia](https://github.com/joannembl/film-militia)
+### [Film Militia](https://film-militia.lovable.app/) · [Source](https://github.com/joannembl/film-militia)
 
 A TypeScript storefront experience for automotive film products, including vehicle selection and fitment flows, product and guide routes, cart state, customer garage and order areas, and administrative screens. The project integrates Shopify data and Supabase-backed authentication and data services.
 
 `React` `TypeScript` `TanStack` `Supabase` `Shopify API` `State Management` `Responsive UI`
 
-### [Automotive Photography Portfolio](https://github.com/joannembl/alex-sczudlo) · [Live site](https://joannembl.github.io/alex-sczudlo/#/)
+### [Kazoku Nightz](https://kazokunightz.com/)
 
-A responsive React portfolio built to showcase automotive photography through a focused gallery experience and reusable components, deployed on GitHub Pages.
+A Japanese-inspired nightlife and automotive event website. My work includes WordPress customization, WooCommerce shop and event integration, gallery management, responsive styling, and ongoing site improvements.
 
-`React` `JavaScript` `HTML` `CSS` `GitHub Pages`
+`WordPress` `WooCommerce` `CSS` `Events` `E-commerce`
 
 ### [Multiverse Apprenticeship Portfolio](https://github.com/joannembl/multiverse-portfolio)
 
@@ -49,9 +49,9 @@ A record of technical projects and durable skills developed during an American E
 ## Core technologies
 
 - **Front end:** React, TypeScript, JavaScript (ES6+), Redux, HTML5, CSS3, responsive and accessible UI development
-- **Testing:** Jest, React Testing Library, Vitest, WebdriverIO, automated UI testing
+- **Testing and quality:** Jest, React Testing Library, Vitest, WebdriverIO, browser testing, API mocking, type checking, ESLint, Prettier
 - **Data and services:** Supabase, PostgreSQL, REST APIs, authentication and authorization, Row Level Security, serverless/Edge Functions
-- **Delivery:** Git, GitHub, CI/CD, GitHub Actions, GitHub Pages, automated deployments, Agile/Scrum
+- **Delivery:** Git, GitHub, CI/CD, GitHub Actions, Jenkins, GitHub Pages, pull-request review, technical documentation, Agile delivery
 
 ## Experience
 
@@ -59,17 +59,21 @@ A record of technical projects and durable skills developed during an American E
 
 *March 2024 – Present · Phoenix, Arizona*
 
-- Build and enhance React and TypeScript features for internal enterprise applications.
-- Develop data-driven dashboards and reusable visualization components that surface operational information.
-- Maintain automated test coverage and use test-aware development to protect production reliability.
-- Contribute through code reviews, documentation, technical discussions, and cross-functional Agile delivery.
+- Deliver production-ready features and shared platform improvements across a multi-repository ecosystem of internal applications used by operations, servicing, support, product, engineering, and business teams.
+- Build reusable React and TypeScript components and custom hooks for data tables, filters, modals, URL state, form submission, responsive navigation, loading states, and error handling.
+- Integrate front-end modules with versioned APIs, translating complex workflows into validated payloads, predictable state transitions, resilient response handling, and clear user feedback.
+- Modernize legacy applications through JavaScript-to-TypeScript migration, shared design patterns, internationalization, accessibility improvements, and dependency remediation.
+- Strengthen delivery with Jest, Vitest, React Testing Library, realistic API mocks, schema and type validation, and CI/CD workflows using GitHub Actions and Jenkins.
 
 **American Express — Junior Software Engineer**
 
 *May 2022 – March 2024 · Phoenix, Arizona*
 
-- Built and maintained React and TypeScript features for internal users.
-- Supported bug fixes, UI testing, debugging, and reliable releases alongside senior engineers.
+- Built and enhanced responsive React and Redux applications supporting internal transaction search, data review, platform monitoring, operational dashboards, and form-driven workflows.
+- Developed advanced search experiences with dynamic filters, pagination, date-range controls, expandable results, status indicators, detail views, and robust error and empty states.
+- Connected user interfaces to enterprise APIs and Redux state, supporting consistent request handling, data transformation, access-aware experiences, and reliable workflow behavior.
+- Improved usability through reusable components, responsive layouts, accessible interactions, role-aware navigation, design-system integration, and realistic browser-test mocks.
+- Collaborated with engineers, product partners, and reviewers through iterative delivery, pull-request feedback, technical documentation, production fixes, and shared platform integrations.
 
 ## Credentials
 

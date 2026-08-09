@@ -28,17 +28,18 @@ const projects = [
     desc: "A TypeScript automotive storefront with vehicle selection and fitment flows, products and guides, cart state, customer garage and order areas, and admin tools. Integrates Shopify data with Supabase-backed services.",
     tags: ["React", "TypeScript", "TanStack", "Supabase", "Shopify API"],
     accent: "#7c1e3a",
-    link: "https://github.com/joannembl/film-militia",
+    link: "https://film-militia.lovable.app/",
+    sourceUrl: "https://github.com/joannembl/film-militia",
   },
   {
     num: "004",
-    title: "Automotive Photography Website",
-    desc: "Designed and built a custom React web application to showcase Alex Sczudlo's automotive photography portfolio. Features a clean gallery layout, responsive design, and component-driven architecture built with Create React App. Deployed live on GitHub Pages.",
-    tags: ["React", "JavaScript", "HTML", "CSS", "GitHub Pages"],
+    title: "Kazoku Nightz",
+    desc: "Ongoing work on a Japanese-inspired nightlife and automotive event website, including WordPress customization, WooCommerce shop and event integration, gallery management, responsive styling, and overall site improvements.",
+    tags: ["WordPress", "WooCommerce", "CSS", "Events", "E-commerce"],
     accent: "#c94c1e",
-    link: "https://github.com/joannembl/alex-sczudlo",
-    liveUrl: "https://joannembl.github.io/alex-sczudlo/#/",
-    badge: "Live Project",
+    link: "https://kazokunightz.com/",
+    liveUrl: "https://kazokunightz.com/",
+    badge: "Ongoing Project",
   },
   {
     num: "005",
@@ -64,10 +65,11 @@ const experience = [
     role: "Software Engineer I",
     company: "American Express · Phoenix, AZ",
     bullets: [
-      "Build and enhance React and TypeScript features for internal enterprise applications.",
-      "Develop data-driven dashboards and reusable visualization components that surface operational information.",
-      "Maintain automated test coverage and use test-aware development to protect production reliability.",
-      "Contribute through code reviews, documentation, technical discussions, and cross-functional Agile delivery.",
+      "Deliver production-ready features and shared platform improvements across a multi-repository ecosystem of internal applications.",
+      "Build reusable React and TypeScript components and custom hooks for data tables, filters, modals, URL state, forms, responsive navigation, loading states, and error handling.",
+      "Integrate front-end modules with versioned APIs using validated payloads, predictable state transitions, resilient response handling, and clear user feedback.",
+      "Modernize legacy applications through JavaScript-to-TypeScript migration, shared design patterns, internationalization, accessibility improvements, and dependency remediation.",
+      "Strengthen delivery with Jest, Vitest, React Testing Library, realistic API mocks, schema and type validation, GitHub Actions, and Jenkins.",
     ],
   },
   {
@@ -75,9 +77,11 @@ const experience = [
     role: "Junior Software Engineer",
     company: "American Express · Phoenix, AZ",
     bullets: [
-      "Developed and maintained React-based UI components for internal tools.",
-      "Used TypeScript and JavaScript to build predictable, maintainable UI behavior.",
-      "Supported testing, debugging, and incremental feature enhancements.",
+      "Built responsive React and Redux applications for transaction search, data review, platform monitoring, operational dashboards, and form-driven workflows.",
+      "Developed advanced search experiences with dynamic filters, pagination, date ranges, expandable results, status indicators, and robust error and empty states.",
+      "Connected interfaces to enterprise APIs and Redux state with consistent request handling, data transformation, and access-aware experiences.",
+      "Improved usability through reusable components, responsive layouts, accessible interactions, role-aware navigation, and design-system integration.",
+      "Collaborated through iterative delivery, pull-request feedback, technical documentation, production fixes, and shared platform integrations.",
     ],
   },
 ];
@@ -503,10 +507,18 @@ function Projects() {
                   <span key={t} style={{ ...mono, fontSize: "0.6rem", letterSpacing: "0.07em", padding: "0.25rem 0.55rem", border: "1px solid var(--border)", color: "#8a7a6a" }}>{t}</span>
                 ))}
               </div>
-              <a href={p.link} target="_blank" rel="noopener noreferrer"
-                style={{ ...mono, fontSize: "0.65rem", color: "var(--rust)", letterSpacing: "0.08em" }}>
-                View on GitHub →
-              </a>
+              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+                <a href={p.link} target="_blank" rel="noopener noreferrer"
+                  style={{ ...mono, fontSize: "0.65rem", color: "var(--rust)", letterSpacing: "0.08em" }}>
+                  {p.link.includes("github") ? "View on GitHub →" : "Visit Live Site ↗"}
+                </a>
+                {p.sourceUrl && (
+                  <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer"
+                    style={{ ...mono, fontSize: "0.65rem", color: "var(--faint)", letterSpacing: "0.08em" }}>
+                    View Source →
+                  </a>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -659,7 +671,7 @@ function Footer() {
       <div style={{ display: "flex", justifyContent: "center", gap: "2rem", marginBottom: "2.5rem", flexWrap: "wrap" }}>
         {[
           ["GitHub", "https://github.com/joannembl"],
-          ["LinkedIn", "https://www.linkedin.com/in/jo-anne-mae-liberato-84920123b/"],
+          ["LinkedIn", "https://www.linkedin.com/in/jmbliberato/"],
           ["Email", "mailto:jmbliberato@gmail.com"],
         ].map(([label, href]) => (
           <a key={label} href={href} target="_blank" rel="noopener noreferrer"
