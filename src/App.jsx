@@ -5,26 +5,43 @@ import { useState, useEffect, useRef } from "react";
 const projects = [
   {
     num: "001",
+    title: "Crafted Digital Mini OS",
+    desc: "An agency workflow platform for prospects, proposals, team workspaces, and demo websites. Includes Supabase authentication and RLS, protected Edge Functions, Google Places import, demo generation, and automated publishing to GitHub Pages.",
+    tags: ["React", "Supabase", "PostgreSQL", "Edge Functions", "GitHub Actions"],
+    accent: "#c94c1e",
+    link: "https://github.com/joannembl/crafted-digital-mini-os",
+    liveUrl: "https://joannembl.github.io/crafted-digital-mini-os/",
+    badge: "Featured Full-Stack Project",
+  },
+  {
+    num: "002",
+    title: "GarageBook",
+    desc: "A mobile-first vehicle logbook for maintenance, modifications, expenses, photos, and ownership history. Built with Next.js and TypeScript using Supabase SSR authentication, PostgreSQL, server actions, data import, and downloadable reports.",
+    tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Authentication"],
+    accent: "#3d6b4f",
+    link: "https://github.com/joannembl/garage-book",
+    badge: "Featured Full-Stack Project",
+  },
+  {
+    num: "003",
+    title: "Film Militia Storefront",
+    desc: "A TypeScript automotive storefront with vehicle selection and fitment flows, products and guides, cart state, customer garage and order areas, and admin tools. Integrates Shopify data with Supabase-backed services.",
+    tags: ["React", "TypeScript", "TanStack", "Supabase", "Shopify API"],
+    accent: "#7c1e3a",
+    link: "https://github.com/joannembl/film-militia",
+  },
+  {
+    num: "004",
     title: "Automotive Photography Website",
     desc: "Designed and built a custom React web application to showcase Alex Sczudlo's automotive photography portfolio. Features a clean gallery layout, responsive design, and component-driven architecture built with Create React App. Deployed live on GitHub Pages.",
     tags: ["React", "JavaScript", "HTML", "CSS", "GitHub Pages"],
     accent: "#c94c1e",
     link: "https://github.com/joannembl/alex-sczudlo",
     liveUrl: "https://joannembl.github.io/alex-sczudlo/#/",
-    badge: "Client Project",
+    badge: "Live Project",
   },
   {
-    num: "002",
-    title: "Kazoku Nightz — WordPress Site",
-    desc: "Helping rebuild and improve the official website for Kazoku Nightz, a Japanese-inspired nightlife event brand. Work includes WordPress customisation, shop and events integration, gallery management, and overall site polish.",
-    tags: ["WordPress", "WooCommerce", "CSS", "Events", "E-commerce"],
-    accent: "#7c1e3a",
-    link: "https://kazokunightz.com/",
-    liveUrl: "https://kazokunightz.com/",
-    badge: "In Progress",
-  },
-  {
-    num: "003",
+    num: "005",
     title: "Multiverse Apprenticeship Portfolio",
     desc: "A curated compilation of technical projects and durable skills built during my 2022–2023 apprenticeship at American Express, sponsored by Multiverse. Covers React dashboards, state management, and Agile delivery.",
     tags: ["React", "Redux", "JavaScript", "Agile"],
@@ -32,28 +49,12 @@ const projects = [
     link: "https://github.com/joannembl/multiverse-portfolio",
   },
   {
-    num: "004",
+    num: "006",
     title: "Single-Page Application",
     desc: "Fully-functional client-side SPA with multiple routes, global state management, accessibility standards, and a styled component library — built as part of Multiverse Workshop Project 1.",
     tags: ["JavaScript", "React", "State Management", "Accessibility"],
     accent: "#7c6fa0",
     link: "https://github.com/joannembl/multiverse-workshop-project-1",
-  },
-  {
-    num: "005",
-    title: "RESTful JWT API",
-    desc: "A RESTful API for a cars resource secured via JWT authentication and bcrypt password hashing. Demonstrates secure backend API design and best practices.",
-    tags: ["JavaScript", "Node.js", "JWT", "bcrypt"],
-    accent: "#d4a832",
-    link: "https://github.com/joannembl/multiverse-workshop-project-2",
-  },
-  {
-    num: "006",
-    title: "Java Self-Study API",
-    desc: "Backend API built with Java and the Vert.x framework as a self-directed second-language study project. Explores asynchronous programming and reactive API design.",
-    tags: ["Java", "Vert.x", "REST API", "Maven"],
-    accent: "#2a6b7c",
-    link: "https://github.com/joannembl/self-study-project",
   },
 ];
 
@@ -63,11 +64,10 @@ const experience = [
     role: "Software Engineer I",
     company: "American Express · Phoenix, AZ",
     bullets: [
-      "Own and enhance front-end features for digital banking and payments platforms.",
-      "Build data-driven dashboards and visualization components for operational insights.",
-      "Apply TypeScript to enforce type safety and reduce UI defects in production.",
-      "Implement automated UI tests using Jest to ensure production reliability.",
-      "Collaborate cross-functionally in Agile / SCRUM delivery cycles.",
+      "Build and enhance React and TypeScript features for internal enterprise applications.",
+      "Develop data-driven dashboards and reusable visualization components that surface operational information.",
+      "Maintain automated test coverage and use test-aware development to protect production reliability.",
+      "Contribute through code reviews, documentation, technical discussions, and cross-functional Agile delivery.",
     ],
   },
   {
@@ -87,40 +87,40 @@ const skillGroups = [
     label: "Languages",
     color: "#c94c1e",
     skills: [
-      { name: "JavaScript (ES6+)", pct: 92 },
-      { name: "TypeScript", pct: 88 },
-      { name: "HTML5 & CSS3", pct: 90 },
-      { name: "Java", pct: 65 },
+      { name: "JavaScript (ES6+)" },
+      { name: "TypeScript" },
+      { name: "HTML5 & CSS3" },
+      { name: "Java" },
     ],
   },
   {
     label: "Frontend",
     color: "#3d6b4f",
     skills: [
-      { name: "React.js", pct: 92 },
-      { name: "Redux", pct: 82 },
-      { name: "Component Architecture", pct: 90 },
-      { name: "Responsive Web Design", pct: 88 },
+      { name: "React" },
+      { name: "Redux" },
+      { name: "Component Architecture" },
+      { name: "Responsive & Accessible UI" },
     ],
   },
   {
     label: "Quality & Testing",
     color: "#7c6fa0",
     skills: [
-      { name: "Jest", pct: 82 },
-      { name: "Test-Aware UI Dev", pct: 85 },
-      { name: "Debugging & Code Review", pct: 88 },
-      { name: "UI Reliability", pct: 90 },
+      { name: "Jest & React Testing Library" },
+      { name: "Vitest" },
+      { name: "WebdriverIO" },
+      { name: "Debugging & Code Review" },
     ],
   },
   {
-    label: "Engineering Practices",
+    label: "Data & Delivery",
     color: "#d4a832",
     skills: [
-      { name: "Git & GitHub", pct: 92 },
-      { name: "CI/CD Pipelines", pct: 78 },
-      { name: "Agile / SCRUM", pct: 88 },
-      { name: "WordPress / WooCommerce", pct: 75 },
+      { name: "Supabase & PostgreSQL" },
+      { name: "REST APIs & Authentication" },
+      { name: "Serverless / Edge Functions" },
+      { name: "CI/CD & GitHub Actions" },
     ],
   },
 ];
@@ -245,17 +245,17 @@ function Stripe() {
   );
 }
 
-function SkillBar({ name, pct, color, animate }) {
+function SkillBar({ name, color, animate }) {
   return (
     <div style={{ marginBottom: "1.1rem" }}>
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.87rem", marginBottom: "0.4rem" }}>
         <span>{name}</span>
-        <span style={{ ...mono, fontSize: "0.68rem", color: "var(--faint)" }}>{pct}%</span>
+        <span aria-hidden="true" style={{ color }}>●</span>
       </div>
       <div style={{ height: "3px", background: "#e8e0d5", position: "relative", overflow: "hidden" }}>
         <div style={{
           position: "absolute", top: 0, left: 0, height: "100%",
-          width: animate ? `${pct}%` : "0%",
+          width: animate ? "100%" : "0%",
           background: color,
           transition: "width 1.3s cubic-bezier(0.16,1,0.3,1)",
         }} />
@@ -321,7 +321,7 @@ function Hero() {
         <div style={{ ...fade(0.1), display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
           <span style={{ display: "block", width: "28px", height: "1.5px", background: "var(--rust)" }} />
           <span style={{ ...mono, fontSize: "0.72rem", color: "var(--rust)", letterSpacing: "0.2em", textTransform: "uppercase" }}>
-            Front-End Software Engineer · Fintech
+          Front-End Software Engineer · React + TypeScript
           </span>
         </div>
 
@@ -334,11 +334,11 @@ function Hero() {
         </h1>
 
         <p style={{ ...fade(0.4), ...serif, fontSize: "clamp(1rem,1.8vw,1.25rem)", fontStyle: "italic", color: "var(--lavender)", marginBottom: "2rem" }}>
-          Building reliable, data-driven UIs for enterprise finance.
+          Building reliable interfaces and thoughtful full-stack products.
         </p>
 
         <p style={{ ...fade(0.5), fontSize: "0.97rem", lineHeight: 1.85, color: "var(--muted)", maxWidth: "440px", marginBottom: "2.5rem" }}>
-          Front-end Software Engineer at American Express — crafting production-grade digital banking interfaces with React, TypeScript, and a relentless focus on UI correctness and user trust.
+          Front-end Software Engineer at American Express with 4+ years in FinTech, building production applications with React, TypeScript, automated testing, and a focus on maintainability and user trust.
         </p>
 
         <div style={{ ...fade(0.6), display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3.5rem" }}>
@@ -371,7 +371,7 @@ function Hero() {
         </div>
 
         <div style={{ ...fade(0.75), display: "flex", gap: "2.5rem", paddingTop: "2rem", borderTop: "1px solid var(--border)" }}>
-          {[["3+", "Years at Amex"], ["6+", "Projects"], ["2", "Credentials"]].map(([num, label]) => (
+          {[["4+", "Years at Amex"], ["6", "Selected Projects"], ["2", "Credentials"]].map(([num, label]) => (
             <div key={label}>
               <span style={{ ...serif, fontSize: "2rem", fontWeight: 700, color: "var(--rust)", display: "block" }}>{num}</span>
               <span style={{ ...mono, fontSize: "0.65rem", color: "var(--faint)", letterSpacing: "0.12em", textTransform: "uppercase" }}>{label}</span>
@@ -393,8 +393,8 @@ function Hero() {
           { text: "TypeScript", top: "72%", left: "55%" },
           { text: "Fintech", top: "55%", left: "8%" },
           { text: "Amex", top: "20%", right: "10%" },
-          { text: "WordPress", bottom: "22%", left: "12%" },
-          { text: "Jest", bottom: "32%", right: "12%" },
+          { text: "Supabase", bottom: "22%", left: "12%" },
+          { text: "Testing", bottom: "32%", right: "12%" },
         ].map(({ text, ...pos }) => (
           <span key={text} style={{ position: "absolute", ...mono, fontSize: "0.62rem", color: "var(--rust)", letterSpacing: "0.12em", opacity: 0.45, ...pos }}>
             {text}
@@ -578,7 +578,7 @@ function Skills() {
                 <span style={{ ...mono, fontSize: "0.68rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>{group.label}</span>
               </div>
               {group.skills.map(s => (
-                <SkillBar key={s.name} name={s.name} pct={s.pct} color={group.color} animate={inView} />
+                <SkillBar key={s.name} name={s.name} color={group.color} animate={inView} />
               ))}
             </div>
           ))}
