@@ -18,11 +18,10 @@ const experience = [
     location: "Phoenix, AZ",
     current: true,
     bullets: [
-      "Deliver production-ready features and shared platform improvements across a multi-repository ecosystem of internal applications used by operations, servicing, support, product, and engineering teams.",
-      "Build reusable React and TypeScript components and custom hooks for data tables, filters, modals, URL state, form submission, responsive navigation, loading states, and error handling.",
-      "Integrate front-end modules with versioned APIs, translating complex workflows into validated payloads, predictable state transitions, resilient response handling, and clear user feedback.",
-      "Modernize legacy applications through JavaScript-to-TypeScript migration, shared design patterns, internationalization, and accessibility improvements.",
-      "Strengthen delivery with Jest, Vitest, React Testing Library, realistic API mocks, schema and type validation, and CI/CD workflows using GitHub Actions and Jenkins.",
+      "Deliver production-ready features and shared platform improvements across a multi-repository ecosystem used by operations, servicing, product, and engineering teams.",
+      "Build reusable React and TypeScript components and custom hooks for data tables, filters, modals, URL state, forms, responsive navigation, and error handling.",
+      "Integrate versioned APIs into complex workflows with validated payloads, predictable state transitions, resilient response handling, and clear user feedback.",
+      "Modernize legacy applications and strengthen delivery through TypeScript migration, accessibility and internationalization improvements, automated testing, GitHub Actions, and Jenkins.",
     ],
     tags: ["React", "TypeScript", "Redux", "Jest", "GitHub Actions"],
   },
@@ -33,9 +32,9 @@ const experience = [
     location: "Phoenix, AZ",
     current: false,
     bullets: [
-      "Built and enhanced responsive React and Redux applications supporting internal transaction search, data review, platform monitoring, and form-driven workflows.",
-      "Developed advanced search experiences with dynamic filters, pagination, date-range controls, expandable results, status indicators, and detail views.",
-      "Connected user interfaces to enterprise APIs and Redux state, supporting consistent request handling, data transformation, and access-aware experiences.",
+      "Built responsive React and Redux applications for transaction search, data review, platform monitoring, operational dashboards, and form-driven workflows.",
+      "Developed advanced search experiences with dynamic filters, pagination, date ranges, expandable results, status indicators, and clear error and empty states.",
+      "Connected interfaces to enterprise APIs and Redux state with consistent request handling, data transformation, and access-aware experiences.",
       "Improved usability through reusable components, responsive layouts, accessible interactions, role-aware navigation, and design-system integration.",
     ],
     tags: ["React", "Redux", "JavaScript", "Accessibility"],
@@ -45,7 +44,6 @@ const experience = [
 const projects = [
   {
     title: "Crafted Digital Mini OS",
-    period: "2025 — Present",
     featured: true,
     desc: "An agency workflow platform for managing prospects, proposals, activities, demo websites, and team workspaces end to end.",
     highlights: [
@@ -59,7 +57,6 @@ const projects = [
   },
   {
     title: "GarageBook",
-    period: "2025",
     featured: true,
     desc: "A mobile-first digital vehicle logbook for tracking maintenance, modifications, expenses, photos, and ownership history.",
     highlights: [
@@ -72,7 +69,6 @@ const projects = [
   },
   {
     title: "Film Militia Storefront",
-    period: "2024",
     desc: "A TypeScript storefront for automotive window film, including vehicle fitment flows and admin tooling.",
     highlights: [
       "Vehicle selection and fitment flows across products and guides",
@@ -85,7 +81,6 @@ const projects = [
   },
   {
     title: "Kazoku Nightz",
-    period: "Ongoing",
     desc: "A Japanese-inspired nightlife and automotive event website with an ongoing WordPress build-out.",
     highlights: [
       "WooCommerce shop and event integration",
@@ -98,7 +93,6 @@ const projects = [
   },
   {
     title: "Multiverse Apprenticeship Portfolio",
-    period: "2022 — 2023",
     desc: "A record of technical projects and durable skills built during a software engineering apprenticeship at American Express, sponsored by Multiverse.",
     highlights: [
       "React dashboards with state management",
@@ -109,7 +103,6 @@ const projects = [
   },
   {
     title: "Single-Page Application",
-    period: "2022",
     desc: "A fully client-side SPA with multiple routes, global state, and a styled component library, built for Multiverse Workshop Project 1.",
     highlights: [
       "Client-side routing and global state management",
@@ -210,6 +203,8 @@ const globalCss = `
     --accent: #8b93ff;
     --accent-bright: #a7adff;
     --accent-soft: rgba(139,147,255,0.1);
+    --cyan: #58d6c7;
+    --pink: #df75b5;
     --amber: #f2b25c;
   }
 
@@ -217,7 +212,10 @@ const globalCss = `
 
   body {
     font-family: 'Inter', -apple-system, sans-serif;
-    background: var(--bg);
+    background:
+      radial-gradient(circle at 10% 12%, rgba(139,147,255,0.13), transparent 28rem),
+      radial-gradient(circle at 92% 72%, rgba(88,214,199,0.08), transparent 30rem),
+      var(--bg);
     color: var(--text-body);
     line-height: 1.6;
   }
@@ -232,12 +230,43 @@ const globalCss = `
     50%       { opacity: 0.35; }
   }
 
+  @keyframes drift {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -10px, 0); }
+  }
+
+  .layout::before {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, black, transparent 82%);
+  }
+
+  .project-card { position: relative; overflow: hidden; }
+  .project-card::before {
+    content: ""; position: absolute; inset: 0 auto 0 0; width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--cyan), transparent 88%);
+    opacity: 0.7;
+  }
+
+  .section-title-mark {
+    display: inline-block; width: 2.5rem; height: 3px; margin-left: 0.7rem;
+    vertical-align: middle; border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--cyan));
+  }
+
   .skip-link {
     position: absolute; left: -999px; top: 0; z-index: 999;
     background: var(--accent); color: #08090d; padding: 0.75rem 1.25rem;
     font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
   }
   .skip-link:focus { left: 1rem; top: 1rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
 
   @media (max-width: 900px) {
     .sidebar { position: static !important; height: auto !important; width: 100% !important;
@@ -269,7 +298,7 @@ function Eyebrow({ children }) {
 function SectionTitle({ children }) {
   return (
     <h2 style={{ fontSize: "clamp(1.5rem,3vw,1.9rem)", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.01em", marginBottom: "2.25rem" }}>
-      {children}
+      {children}<span className="section-title-mark" aria-hidden="true" />
     </h2>
   );
 }
@@ -350,13 +379,21 @@ function Sidebar() {
       width: "40%", maxWidth: "460px", position: "sticky", top: 0, height: "100vh",
       padding: "4.5rem 3.5rem 3rem 3.5rem", display: "flex", flexDirection: "column",
       justifyContent: "space-between", borderRight: "1px solid var(--border)",
+      background: "linear-gradient(155deg, rgba(139,147,255,0.07), rgba(10,12,17,0) 48%)",
     }}>
       <div>
+        <div aria-hidden="true" style={{
+          ...mono, width: "3rem", height: "3rem", display: "grid", placeItems: "center",
+          marginBottom: "1.5rem", border: "1px solid var(--border-hover)", borderRadius: "10px",
+          color: "var(--accent-bright)", fontSize: "0.8rem", fontWeight: 600,
+          background: "linear-gradient(135deg, rgba(139,147,255,0.16), rgba(88,214,199,0.08))",
+          boxShadow: "0 12px 40px rgba(0,0,0,0.2)", animation: "drift 6s ease-in-out infinite",
+        }}>JL</div>
         <h1 className="hero-name" style={{ fontSize: "clamp(1.9rem,2.6vw,2.4rem)", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "0.6rem" }}>
           Jo-anne Mae Liberato
         </h1>
         <p style={{ ...mono, fontSize: "0.92rem", color: "var(--accent)", marginBottom: "1.5rem" }}>
-          Software Engineer
+          Front-End Software Engineer
         </p>
         <p className="sidebar-desc" style={{ fontSize: "0.94rem", color: "var(--text-body)", lineHeight: 1.75, maxWidth: "320px", marginBottom: "2.5rem" }}>
           I build reliable, production-grade interfaces for enterprise FinTech applications, and ship full-stack products end to end in my own time. Based in Phoenix, AZ.
@@ -494,7 +531,7 @@ function ProjectCard({ p, i, featured }) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div ref={ref}
+    <div ref={ref} className="project-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -503,13 +540,16 @@ function ProjectCard({ p, i, featured }) {
         borderRadius: "10px",
         padding: featured ? "2rem" : "1.6rem",
         opacity: inView ? 1 : 0,
-        transform: inView ? "translateY(0)" : "translateY(14px)",
+        transform: inView ? (hovered ? "translateY(-4px)" : "translateY(0)") : "translateY(14px)",
         transition: `opacity 0.5s ease ${i * 0.06}s, transform 0.5s ease ${i * 0.06}s, border-color 0.2s, background 0.2s`,
         display: "flex", flexDirection: "column", height: "100%",
+        boxShadow: hovered ? "0 18px 55px rgba(0,0,0,0.3), 0 0 0 1px rgba(139,147,255,0.05)" : "0 8px 30px rgba(0,0,0,0.12)",
       }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "0.75rem" }}>
         <h3 style={{ fontSize: featured ? "1.15rem" : "1.02rem", fontWeight: 700, color: "var(--text)" }}>{p.title}</h3>
-        <span style={{ ...mono, fontSize: "0.66rem", color: "var(--text-faint)", flexShrink: 0, marginLeft: "0.75rem" }}>{p.period}</span>
+        <span style={{ ...mono, fontSize: "0.66rem", color: "var(--accent)", flexShrink: 0, marginLeft: "0.75rem" }}>
+          {String(i + 1).padStart(2, "0")}
+        </span>
       </div>
       <p style={{ fontSize: "0.87rem", color: "var(--text-body)", lineHeight: 1.75, marginBottom: featured ? "1.1rem" : "0.9rem" }}>{p.desc}</p>
 
@@ -529,7 +569,9 @@ function ProjectCard({ p, i, featured }) {
 
       <div style={{ display: "flex", gap: "1.35rem", marginTop: "auto" }}>
         {p.liveUrl && <LinkRow href={p.liveUrl} label="Live site" />}
-        <LinkRow href={p.link} label={p.link.includes("github") ? "Source" : "Repo"} />
+        {(!p.liveUrl || p.link !== p.liveUrl) && (
+          <LinkRow href={p.link} label={p.link.includes("github") ? "Source" : "Project"} />
+        )}
       </div>
     </div>
   );
@@ -611,7 +653,7 @@ function Contact() {
     }}>
       <Eyebrow>Contact</Eyebrow>
       <h2 style={{ fontSize: "clamp(1.6rem,3.5vw,2.1rem)", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.01em", lineHeight: 1.3, marginBottom: "1.1rem", maxWidth: "540px" }}>
-        Open to Software Engineer II opportunities.
+        Open to Front-End Engineer and Software Engineer II opportunities.
       </h2>
       <p style={{ fontSize: "0.95rem", color: "var(--text-body)", lineHeight: 1.8, maxWidth: "480px", marginBottom: "2rem" }}>
         I'm always glad to talk about front-end architecture, FinTech-scale reliability, or a role where I can take on more ownership. The fastest way to reach me is email.
